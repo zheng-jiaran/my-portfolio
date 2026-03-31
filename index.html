@@ -79,11 +79,11 @@
       transition: opacity 0.3s;
     }
 
-    .nav-links a:hover {
-      opacity: 1;
-    }
+.nav-links a:hover {
+  opacity: 1;
+}
 
-    /* 首页区域 */
+/* 首页区域 */      
     .hero {
       height: 100vh;
       display: flex;
@@ -168,6 +168,9 @@
     }
   </style>
 </head>
+<script>
+  alert("你好，欢迎来到我的个人作品集！")
+</script>
 
 <body>
   <!-- 星星背景容器 -->
@@ -207,11 +210,14 @@
       <li><a href="#projects">项目</a></li>
       <li><a href="#contact">联系</a></li>
     </ul>
+    <button onclick="toggleTheme()" id="theme-btn" style="background:none; border:2px solid white; color:white; padding:6px 14px; border-radius:20px; cursor:pointer; font-size:0.9rem;">
+      🌙 深色
+    </button>
   </nav>
 
   <!-- 首页 -->
   <section class="hero" id="home">
-    <h1> 🌟 个人自我介绍🌟</h1>
+    <h1 id = "main-title"> 🌟 个人自我介绍🌟</h1>
     <p>你好！我是 郑家冉，今年 20 岁，就读于 智能科学与技术 专业，是一名对技术充满热情的女开发者。
 目前我正专注于 「前端 + AI」 的技术转型方向，希望能将前端的视觉构建能力与人工智能的创新能力相结合，打造出更具交互性和智能性的应用体验。</p>
   </section>
@@ -261,6 +267,48 @@
       <a href="#" style="color: #460076; text-decoration: none; opacity: 0.8; transition: opacity 0.3s;">邮箱</a>
     </div>
     <p style="margin-top: 3rem; opacity: 0.5; font-size: 0.875rem;">© 2026 郑家冉. All rights reserved.</p>
+    <div style="max-width:500px; margin:40px auto; padding:20px; background:#f8f8f8; border-radius:12px;">
+  <h3 style="margin-bottom:12px;">✍️ 给我留言</h3>
+  <textarea 
+    id="message-box" 
+    oninput="countWords()" 
+    placeholder="在这里输入内容..." 
+    style="width:100%; height:120px; padding:12px; border:2px solid #ddd; border-radius:8px; font-size:1rem; resize:none; box-sizing:border-box;">
+  </textarea>
+  <p id="word-count" style="margin-top:8px; color:#666; font-size:0.9rem;">你已输入 0 个字</p>
+</div>
   </section>
+  <script>
+     var isDark = false;
+  function changeTitle() {
+    document.getElementById("main-title").innerText = "你点了按钮！🎉"
+  }
+  function countWords() {
+  var text = document.getElementById("message-box").value;
+  var count = text.length;
+  document.getElementById("word-count").innerText = "你已输入 " + count + " 个字";
+}
+function toggleTheme() {
+  var body = document.body;
+  var btn = document.getElementById("theme-btn");
+  
+  if (isDark) {
+    body.style.background = "";
+    body.style.color = "";
+    btn.innerText = "🌙 深色";
+    isDark = false;
+  } else {
+    body.style.background = "#121212";
+    body.style.color = "#ffffff";
+    btn.innerText = "☀️ 浅色";
+    isDark = true;
+  }
+}
+
+</script>
+<button onclick="changeTitle()" style="position:fixed; bottom:20px; right:20px; padding:10px 20px; background:#6366f1; color:white; border:none; border-radius:8px; cursor:pointer; font-size:1rem;">
+  点我
+</button>
+
 </body>
 </html>
