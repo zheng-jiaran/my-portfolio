@@ -227,19 +227,9 @@
     <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 3rem;">关于我</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
       <!-- 技能卡片 -->
-      <div style="padding: 2rem; border-radius: 1rem;">
-        <h3 style="color: #460076; margin-bottom: 1rem;">🎯 目标</h3>
-        <p>成为优秀的前端工程师，专注于 AI 与前端结合的创新应用。</p>
-      </div>
-      <div style="padding: 2rem; border-radius: 1rem;">
-        <h3 style="color: #460076; margin-bottom: 1rem;">📚 学习</h3>
-        <p>正在系统学习 HTML/CSS/JavaScript，计划4~5个月内掌握 React 和 AI 集成。</p>
-      </div>
-      <div style="padding: 2rem; border-radius: 1rem;">
-        <h3 style="color: #460076; margin-bottom: 1rem;">🚀 项目</h3>
-        <p>正在构建个人作品集网站，这是第一个完整的前端项目。</p>
-      </div>
-    </div>
+            <!-- JS 会在这里自动生成卡片 -->
+      <div id="about-list"></div>
+
   </section>
 
   <!-- 项目部分 -->
@@ -247,14 +237,9 @@
     <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 3rem;">我的项目</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
       <!-- 项目卡片 -->
-      <div style="padding: 2rem; border-radius: 1rem; border: 1px solid #460076;">
-        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">个人作品集网站</h3>
-        <p style="opacity: 0.8; margin-bottom: 1rem;">使用纯 HTML/CSS 构建的响应式个人网站，包含导航、技能展示和项目列表。</p>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <span style="background: #460076; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">HTML</span>
-          <span style="background: #460076; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.875rem;">CSS</span>
-        </div>
-      </div>
+            <!-- JS 会在这里自动生成项目卡片 -->
+      <div id="project-list"></div>
+
     </div>
   </section>
 
@@ -304,7 +289,44 @@ function toggleTheme() {
     isDark = true;
   }
 }
+var projects = [
+  { name: "个人作品集", desc: "我的第一个网站项目", tech: "HTML / CSS" },
+  { name: "待添加", desc: "下一个项目敬请期待", tech: "待定" },
+  { name: "待添加", desc: "更多精彩项目 coming soon", tech: "待定" }
+];
+var aboutItems = [
+  { icon: "🎯", title: "目标", text: "成为优秀的前端工程师，专注于 AI 与前端结合的创新应用。" },
+  { icon: "📚", title: "学习", text: "正在系统学习 HTML/CSS/JavaScript，计划4~5个月内掌握 React 和 AI 集成。" },
+  { icon: "🚀", title: "项目", text: "正在构建个人作品集网站，这是第一个完整的前端项目。" }
+];
 
+function renderProjects() {
+  var container = document.getElementById("project-list");
+  container.innerHTML = "";
+  
+  for (var i = 0; i < projects.length; i++) {
+    var html = '<div style="background:white; border-radius:12px; padding:24px; box-shadow:0 2px 8px rgba(0,0,0,0.1); transition:transform 0.3s;">'
+      + '<h3 style="margin-bottom:8px; color:#333;">' + projects[i].name + '</h3>'
+      + '<p style="color:#666; margin-bottom:12px;">' + projects[i].desc + '</p>'
+      + '<span style="background:#6366f1; color:white; padding:4px 12px; border-radius:20px; font-size:0.85rem;">' + projects[i].tech + '</span>'
+      + '</div>';
+    container.innerHTML = container.innerHTML + html;
+  }
+}
+function renderAbout() {
+  var container = document.getElementById("about-list");
+  container.innerHTML = "";
+
+  for (var i = 0; i < aboutItems.length; i++) {
+    var html = '<div style="padding:2rem; border-radius:1rem;">'
+      + '<h3 style="color:#460076; margin-bottom:1rem;">' + aboutItems[i].icon + ' ' + aboutItems[i].title + '</h3>'
+      + '<p>' + aboutItems[i].text + '</p>'
+      + '</div>';
+    container.innerHTML = container.innerHTML + html;
+  }
+}
+renderAbout();
+renderProjects();
 </script>
 <button onclick="changeTitle()" style="position:fixed; bottom:20px; right:20px; padding:10px 20px; background:#6366f1; color:white; border:none; border-radius:8px; cursor:pointer; font-size:1rem;">
   点我
