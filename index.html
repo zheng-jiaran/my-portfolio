@@ -238,6 +238,27 @@
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
       <!-- 项目卡片 -->
             <!-- JS 会在这里自动生成项目卡片 -->
+             <!-- 添加项目表单 -->
+<div style="max-width:600px; margin:0 auto 3rem auto; padding:2rem; background:rgba(70,0,118,0.05); border-radius:1rem; border:2px solid rgba(70,0,118,0.2);">
+  <h3 style="margin-bottom:1.5rem; color:#460076;">➕ 添加新项目</h3>
+  <div style="margin-bottom:1rem;">
+    <input id="input-name" type="text" placeholder="项目名称" 
+      style="width:100%; padding:10px 14px; border:2px solid #ddd; border-radius:8px; font-size:1rem; box-sizing:border-box;">
+  </div>
+  <div style="margin-bottom:1rem;">
+    <input id="input-desc" type="text" placeholder="项目描述" 
+      style="width:100%; padding:10px 14px; border:2px solid #ddd; border-radius:8px; font-size:1rem; box-sizing:border-box;">
+  </div>
+  <div style="margin-bottom:1.5rem;">
+    <input id="input-tech" type="text" placeholder="技术栈（如：HTML / CSS）" 
+      style="width:100%; padding:10px 14px; border:2px solid #ddd; border-radius:8px; font-size:1rem; box-sizing:border-box;">
+  </div>
+  <button onclick="addProject()" 
+    style="background:#460076; color:white; border:none; padding:12px 32px; border-radius:8px; font-size:1rem; cursor:pointer;">
+    添加项目
+  </button>
+</div>
+
       <div id="project-list"></div>
 
     </div>
@@ -264,6 +285,30 @@
 </div>
   </section>
   <script>
+    function addProject() {
+  // 1. 读取三个输入框的内容
+  var name = document.getElementById("input-name").value;
+  var desc = document.getElementById("input-desc").value;
+  var tech = document.getElementById("input-tech").value;
+
+  // 2. 检查：如果名称是空的，提醒用户
+  if (name === "") {
+    alert("请填写项目名称！");
+    return;
+  }
+
+  // 3. 把新项目加入数组
+  projects.push({ name: name, desc: desc, tech: tech });
+
+  // 4. 重新渲染项目列表
+  renderProjects();
+
+  // 5. 清空输入框
+  document.getElementById("input-name").value = "";
+  document.getElementById("input-desc").value = "";
+  document.getElementById("input-tech").value = "";
+}
+
      var isDark = false;
   function changeTitle() {
     document.getElementById("main-title").innerText = "你点了按钮！🎉"
@@ -290,9 +335,7 @@ function toggleTheme() {
   }
 }
 var projects = [
-  { name: "个人作品集", desc: "我的第一个网站项目", tech: "HTML / CSS" },
-  { name: "待添加", desc: "下一个项目敬请期待", tech: "待定" },
-  { name: "待添加", desc: "更多精彩项目 coming soon", tech: "待定" }
+  { name: "个人作品集", desc: "我的第一个网站项目"},
 ];
 var aboutItems = [
   { icon: "🎯", title: "目标", text: "成为优秀的前端工程师，专注于 AI 与前端结合的创新应用。" },
