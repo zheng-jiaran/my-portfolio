@@ -168,10 +168,6 @@
     }
   </style>
 </head>
-<script>
-  alert("你好，欢迎来到我的个人作品集！")
-</script>
-
 <body>
   <!-- 星星背景容器 -->
   <div class="stars" id="stars"></div>
@@ -217,7 +213,7 @@
 
   <!-- 首页 -->
   <section class="hero" id="home">
-    <h1 id = "main-title"> 🌟 个人自我介绍🌟</h1>
+    <h1 id="main-title">🌟 个人自我介绍 🌟</h1>
     <p>你好！我是 郑家冉，今年 20 岁，就读于 智能科学与技术 专业，是一名对技术充满热情的女开发者。
 目前我正专注于 「前端 + AI」 的技术转型方向，希望能将前端的视觉构建能力与人工智能的创新能力相结合，打造出更具交互性和智能性的应用体验。</p>
   </section>
@@ -232,35 +228,85 @@
 
   </section>
 
+  <!-- 技能部分 -->
+  <section id="skills" style="padding: 5rem 10%; min-height: 100vh;">
+    <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 3rem;">技能掌握</h2>
+    <div style="max-width: 600px; margin: 0 auto;">
+      <!-- 技能1：HTML/CSS -->
+      <div style="margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span>HTML / CSS</span>
+          <span>85%</span>
+        </div>
+        <div style="background: #e0e0e0; border-radius: 10px; height: 20px; overflow: hidden;">
+          <div class="skill-bar" data-target="85" style="background: linear-gradient(90deg, #460076, #BF7EEE); height: 100%; width: 0%; border-radius: 10px; transition: width 0.1s linear;"></div>
+        </div>
+      </div>
+      <!-- 技能2：JavaScript -->
+      <div style="margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span>JavaScript</span>
+          <span>70%</span>
+        </div>
+        <div style="background: #e0e0e0; border-radius: 10px; height: 20px; overflow: hidden;">
+          <div class="skill-bar" data-target="70" style="background: linear-gradient(90deg, #460076, #BF7EEE); height: 100%; width: 0%; border-radius: 10px; transition: width 0.1s linear;"></div>
+        </div>
+      </div>
+      <!-- 技能3：Git / GitHub -->
+      <div style="margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span>Git / GitHub</span>
+          <span>75%</span>
+        </div>
+        <div style="background: #e0e0e0; border-radius: 10px; height: 20px; overflow: hidden;">
+          <div class="skill-bar" data-target="75" style="background: linear-gradient(90deg, #460076, #BF7EEE); height: 100%; width: 0%; border-radius: 10px; transition: width 0.1s linear;"></div>
+        </div>
+      </div>
+      <!-- 技能4：React -->
+      <div style="margin-bottom: 2rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span>React</span>
+          <span>30%</span>
+        </div>
+        <div style="background: #e0e0e0; border-radius: 10px; height: 20px; overflow: hidden;">
+          <div class="skill-bar" data-target="30" style="background: linear-gradient(90deg, #460076, #BF7EEE); height: 100%; width: 0%; border-radius: 10px; transition: width 0.1s linear;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 项目部分 -->
   <section id="projects" style="padding: 5rem 10%; min-height: 100vh;">
-    <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 3rem;">我的项目</h2>
+    <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">我的项目</h2>
+    <!-- 添加项目表单（放在grid外面，独立区域） -->
+    <div style="max-width:600px; margin:0 auto 2rem auto; padding:2rem; background:rgba(70,0,118,0.05); border-radius:1rem; border:2px solid rgba(70,0,118,0.2);">
+      <h3 style="margin-bottom:1.5rem; color:#460076;">➕ 添加新项目</h3>
+      <div style="margin-bottom:1rem;">
+        <input id="input-name" type="text" placeholder="项目名称" 
+          style="width:100%; padding:10px 14px; border:2px solid #ddd; border-radius:8px; font-size:1rem; box-sizing:border-box;">
+      </div>
+      <div style="margin-bottom:1rem;">
+        <input id="input-desc" type="text" placeholder="项目描述" 
+          style="width:100%; padding:10px 14px; border:2px solid #ddd; border-radius:8px; font-size:1rem; box-sizing:border-box;">
+      </div>
+      <div style="margin-bottom:1.5rem;">
+        <input id="input-tech" type="text" placeholder="技术栈（如：HTML / CSS）" 
+          style="width:100%; padding:10px 14px; border:2px solid #ddd; border-radius:8px; font-size:1rem; box-sizing:border-box;">
+      </div>
+      <button onclick="addProject()" 
+        style="background:#460076; color:white; border:none; padding:12px 32px; border-radius:8px; font-size:1rem; cursor:pointer;">
+        添加项目
+      </button>
+    </div>
+    <!-- 搜索框 -->
+    <div style="max-width:400px; margin:0 auto 1rem auto;">
+      <input id="search-input" type="text" placeholder="🔍 搜索项目名称或技术栈..." 
+        style="width:100%; padding:10px 16px; border:2px solid #ddd; border-radius:8px; font-size:1rem; box-sizing:border-box;">
+    </div>
+    <p id="project-count" style="color:#666; margin-bottom:16px; font-size:0.95rem; text-align:center;"></p>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
-      <!-- 项目卡片 -->
-            <!-- JS 会在这里自动生成项目卡片 -->
-             <!-- 添加项目表单 -->
-<div style="max-width:600px; margin:0 auto 3rem auto; padding:2rem; background:rgba(70,0,118,0.05); border-radius:1rem; border:2px solid rgba(70,0,118,0.2);">
-  <h3 style="margin-bottom:1.5rem; color:#460076;">➕ 添加新项目</h3>
-  <div style="margin-bottom:1rem;">
-    <input id="input-name" type="text" placeholder="项目名称" 
-      style="width:100%; padding:10px 14px; border:2px solid #ddd; border-radius:8px; font-size:1rem; box-sizing:border-box;">
-  </div>
-  <div style="margin-bottom:1rem;">
-    <input id="input-desc" type="text" placeholder="项目描述" 
-      style="width:100%; padding:10px 14px; border:2px solid #ddd; border-radius:8px; font-size:1rem; box-sizing:border-box;">
-  </div>
-  <div style="margin-bottom:1.5rem;">
-    <input id="input-tech" type="text" placeholder="技术栈（如：HTML / CSS）" 
-      style="width:100%; padding:10px 14px; border:2px solid #ddd; border-radius:8px; font-size:1rem; box-sizing:border-box;">
-  </div>
-  <button onclick="addProject()" 
-    style="background:#460076; color:white; border:none; padding:12px 32px; border-radius:8px; font-size:1rem; cursor:pointer;">
-    添加项目
-  </button>
-</div>
-
+      <!-- JS 会在这里自动生成项目卡片 -->
       <div id="project-list"></div>
-
     </div>
   </section>
 
@@ -285,118 +331,257 @@
 </div>
   </section>
   <script>
+    // ========== 第一部分：数据定义（放在最前面，确保后面都能用到）==========
+
+    // 默认项目数据
+    var projects = [
+      { name: "个人作品集", desc: "我的第一个网站项目", tech: "HTML / CSS" }
+    ];
+
+    // 页面加载时：从localStorage读取保存的项目（数据持久化）
+    (function loadProjects() {
+      var saved = localStorage.getItem("projects");
+      if (saved !== null) {
+        projects = JSON.parse(saved);
+      }
+    })();
+
+    var aboutItems = [
+      { icon: "🎯", title: "目标", text: "成为优秀的前端工程师，专注于 AI 与前端结合的创新应用。" },
+      { icon: "📚", title: "学习", text: "正在系统学习 HTML/CSS/JavaScript，计划4~5个月内掌握 React 和 AI 集成。" },
+      { icon: "🚀", title: "项目", text: "正在构建个人作品集网站，这是第一个完整的前端项目。" }
+    ];
+
+    let isDark = false;
+
+    // ========== 第二部分：主题切换（深色模式持久化）==========
+
+    // 页面加载时：从localStorage读取上次保存的主题
+    (function loadTheme() {
+      var saved = localStorage.getItem("theme");
+      if (saved === "dark") {
+        document.body.style.background = "#121212";
+        document.body.style.color = "#ffffff";
+        document.getElementById("theme-btn").innerText = "☀️ 浅色";
+        isDark = true;
+      }
+    })();
+
+    function toggleTheme() {
+      var body = document.body;
+      var btn = document.getElementById("theme-btn");
+
+      if (isDark) {
+        body.style.background = "";
+        body.style.color = "";
+        btn.innerText = "🌙 深色";
+        localStorage.setItem("theme", "light");
+        isDark = false;
+      } else {
+        body.style.background = "#121212";
+        body.style.color = "#ffffff";
+        btn.innerText = "☀️ 浅色";
+        localStorage.setItem("theme", "dark");
+        isDark = true;
+      }
+    }
+
+    // ========== 第三部分：输入验证函数 ==========
+
+    function checkInput(value, fieldName) {
+      if (value.trim() === "") {
+        alert("请填写" + fieldName + "！");
+        return false;
+      }
+      return true;
+    }
+
+    // ========== 第四部分：项目增删查 ==========
+
     function addProject() {
-  // 1. 读取三个输入框的内容
-  var name = document.getElementById("input-name").value;
-  var desc = document.getElementById("input-desc").value;
-  var tech = document.getElementById("input-tech").value;
+      // 1. 读取三个输入框的内容
+      var name = document.getElementById("input-name").value;
+      var desc = document.getElementById("input-desc").value;
+      var tech = document.getElementById("input-tech").value;
 
-  // 2. 检查：如果名称是空的，提醒用户
-  if (name === "") {
-    alert("请填写项目名称！");
-    return;
-  }
+      // 2. 验证三个输入框
+      if (!checkInput(name, "项目名称")) return;
+      if (!checkInput(desc, "项目描述")) return;
+      if (!checkInput(tech, "技术栈")) return;
 
-  // 3. 把新项目加入数组
-  projects.push({ name: name, desc: desc, tech: tech });
+      // 3. 把新项目加入数组
+      projects.push({ name: name.trim(), desc: desc.trim(), tech: tech.trim() });
 
-  // 4. 重新渲染项目列表
-  renderProjects();
+      // 4. 重新渲染项目列表
+      renderProjects();
 
-  // 5. 清空输入框
-  document.getElementById("input-name").value = "";
-  document.getElementById("input-desc").value = "";
-  document.getElementById("input-tech").value = "";
-}
+      // 5. 清空输入框
+      document.getElementById("input-name").value = "";
+      document.getElementById("input-desc").value = "";
+      document.getElementById("input-tech").value = "";
 
-     var isDark = false;
-  function changeTitle() {
-    document.getElementById("main-title").innerText = "你点了按钮！🎉"
-  }
-  function countWords() {
-  var text = document.getElementById("message-box").value;
-  var count = text.length;
-  document.getElementById("word-count").innerText = "你已输入 " + count + " 个字";
-}
-function toggleTheme() {
-  var body = document.body;
-  var btn = document.getElementById("theme-btn");
-  
-  if (isDark) {
-    body.style.background = "";
-    body.style.color = "";
-    btn.innerText = "🌙 深色";
-    isDark = false;
-  } else {
-    body.style.background = "#121212";
-    body.style.color = "#ffffff";
-    btn.innerText = "☀️ 浅色";
-    isDark = true;
-  }
-}
-var projects = [
-  { name: "个人作品集", desc: "我的第一个网站项目", tech: "HTML / CSS" }
-  // 确保是 tech，不是 technology 或其他
-];
+      // 6. 保存到localStorage（项目数据持久化）
+      localStorage.setItem("projects", JSON.stringify(projects));
+    }
 
-var aboutItems = [
-  { icon: "🎯", title: "目标", text: "成为优秀的前端工程师，专注于 AI 与前端结合的创新应用。" },
-  { icon: "📚", title: "学习", text: "正在系统学习 HTML/CSS/JavaScript，计划4~5个月内掌握 React 和 AI 集成。" },
-  { icon: "🚀", title: "项目", text: "正在构建个人作品集网站，这是第一个完整的前端项目。" }
-];
+    function deleteProject(index) {
+      var name = projects[index].name;
+      var confirmDelete = window.confirm("确定要删除项目「" + name + "」吗？");
 
-function renderProjects() {
-  var container = document.getElementById("project-list");
-  container.innerHTML = "";
-  
-  for (var i = 0; i < projects.length; i++) {
-    var html = '<div class="project-card" data-index="' + i + '" style="background:white; border-radius:12px; padding:24px; box-shadow:0 2px 8px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;">'
-      + '<h3 style="margin-bottom:8px; color:#333;">' + projects[i].name + '</h3>'
-      + '<p style="color:#666; margin-bottom:12px;">' + projects[i].desc + '</p>'
-      + '<span style="background:#6366f1; color:white; padding:4px 12px; border-radius:20px; font-size:0.85rem;">' + projects[i].tech + '</span>'
-      + '</div>';
-    container.innerHTML = container.innerHTML + html;
-  }
-  
-  // 用 JS 绑定点击事件
-  var cards = document.querySelectorAll(".project-card");
-  for (var i = 0; i < cards.length; i++) {
-    cards[i].addEventListener("click", function() {
-      var index = this.getAttribute("data-index");
-      openModal(index);
+      if (!confirmDelete) return;
+
+      projects.splice(index, 1);
+      localStorage.setItem("projects", JSON.stringify(projects));
+      renderProjects();
+    }
+
+    // ========== 第五部分：卡片生成与事件绑定 ==========
+
+    function createCardHTML(project, index) {
+      return '<div class="project-card" data-index="' + index + '" style="background:white; border-radius:12px; padding:24px; box-shadow:0 2px 8px rgba(0,0,0,0.1); cursor:pointer; transition:transform 0.2s;">' +
+        '<h3 style="margin-bottom:8px; color:#333;">' + project.name + '</h3>' +
+        '<p style="color:#666; margin-bottom:12px;">' + project.desc + '</p>' +
+        '<span style="background:#6366f1; color:white; padding:4px 12px; border-radius:20px; font-size:0.85rem;">' + project.tech + '</span>' +
+        '<button class="delete-btn" data-index="' + index + '" style="float:right; background:#ff4d4f; color:white; border:none; padding:6px 14px; border-radius:6px; cursor:pointer; font-size:0.85rem; margin-top:8px;">删除</button>' +
+        '</div>';
+    }
+
+    function bindCardEvents() {
+      var cards = document.querySelectorAll(".project-card");
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].addEventListener("click", function(e) {
+          if (e.target.classList.contains("delete-btn")) return;
+          var index = this.getAttribute("data-index");
+          openModal(index);
+        });
+      }
+
+      var deleteBtns = document.querySelectorAll(".delete-btn");
+      for (var i = 0; i < deleteBtns.length; i++) {
+        deleteBtns[i].addEventListener("click", function() {
+          var index = this.getAttribute("data-index");
+          deleteProject(index);
+        });
+      }
+    }
+
+    // ========== 第六部分：渲染函数 ==========
+
+    function renderProjects() {
+      var container = document.getElementById("project-list");
+      container.innerHTML = "";
+
+      for (var i = 0; i < projects.length; i++) {
+        var html = createCardHTML(projects[i], i);
+        container.innerHTML = container.innerHTML + html;
+      }
+
+      bindCardEvents();
+      document.getElementById("project-count").innerText = "共 " + projects.length + " 个项目";
+    }
+
+    function renderAbout() {
+      var container = document.getElementById("about-list");
+      container.innerHTML = "";
+
+      for (var i = 0; i < aboutItems.length; i++) {
+        var html = '<div style="padding:2rem; border-radius:1rem;">' +
+          '<h3 style="color:#460076; margin-bottom:1rem;">' + aboutItems[i].icon + ' ' + aboutItems[i].title + '</h3>' +
+          '<p>' + aboutItems[i].text + '</p>' +
+          '</div>';
+        container.innerHTML = container.innerHTML + html;
+      }
+    }
+
+    // ========== 第七部分：搜索功能 ==========
+
+    function searchProjects(keyword) {
+      var container = document.getElementById("project-list");
+      container.innerHTML = "";
+
+      if (keyword === "") {
+        document.getElementById("project-count").innerText = "共 " + projects.length + " 个项目";
+        renderProjects();
+        return;
+      }
+
+      var count = 0;
+      for (var i = 0; i < projects.length; i++) {
+        var name = projects[i].name.toLowerCase();
+        var tech = projects[i].tech.toLowerCase();
+        var key = keyword.toLowerCase();
+
+        if (name.indexOf(key) !== -1 || tech.indexOf(key) !== -1) {
+          count = count + 1;
+          var html = createCardHTML(projects[i], i);
+          container.innerHTML = container.innerHTML + html;
+        }
+      }
+
+      document.getElementById("project-count").innerText = "搜索到 " + count + " 个项目";
+      bindCardEvents();
+    }
+
+    // 给搜索框绑定输入事件
+    document.getElementById("search-input").addEventListener("input", function() {
+      searchProjects(this.value);
     });
-  }
-}
 
-function renderAbout() {
-  var container = document.getElementById("about-list");
-  container.innerHTML = "";
+    // ========== 第八部分：弹窗 ==========
 
-  for (var i = 0; i < aboutItems.length; i++) {
-    var html = '<div style="padding:2rem; border-radius:1rem;">'
-      + '<h3 style="color:#460076; margin-bottom:1rem;">' + aboutItems[i].icon + ' ' + aboutItems[i].title + '</h3>'
-      + '<p>' + aboutItems[i].text + '</p>'
-      + '</div>';
-    container.innerHTML = container.innerHTML + html;
-  }
-}
-renderAbout();
-renderProjects();
-function openModal(index) {
-  var project = projects[index];
-  document.getElementById("modal-name").innerText = project.name;
-  document.getElementById("modal-desc").innerText = project.desc;
-  // 如果 tech 不存在，显示"暂无"
-  document.getElementById("modal-tech").innerText = project.tech || "暂无";
-  document.getElementById("project-modal").style.display = "block";
-}
+    function openModal(index) {
+      var project = projects[index];
+      document.getElementById("modal-name").innerText = project.name;
+      document.getElementById("modal-desc").innerText = project.desc;
+      document.getElementById("modal-tech").innerText = project.tech || "暂无";
+      document.getElementById("project-modal").style.display = "block";
+    }
 
+    function closeModal() {
+      document.getElementById("project-modal").style.display = "none";
+    }
 
-function closeModal() {
-  document.getElementById("project-modal").style.display = "none";
-}
+    // ========== 第九部分：其他功能 ==========
 
-</script>
+    function changeTitle() {
+      document.getElementById("main-title").innerText = "你点了按钮！🎉";
+    }
+
+    function countWords() {
+      var text = document.getElementById("message-box").value;
+      var count = text.length;
+      document.getElementById("word-count").innerText = "你已输入 " + count + " 个字";
+    }
+
+    // ========== 页面初始化：渲染所有内容 ==========
+    renderAbout();
+    renderProjects();
+
+    // ========== 技能进度条动画 ==========
+    function animateSkillBars() {
+      var bars = document.querySelectorAll(".skill-bar");
+      
+      for (var i = 0; i < bars.length; i++) {
+        (function(bar) {
+          var target = parseInt(bar.getAttribute("data-target"));  // 获取目标百分比
+          var current = 0;  // 从0开始
+          
+          var timer = setInterval(function() {
+            current = current + 1;  // 每次加1%
+            bar.style.width = current + "%";  // 设置宽度
+            
+            if (current >= target) {
+              clearInterval(timer);  // 到达目标，停止
+            }
+          }, 20);  // 每20毫秒加1%
+        })(bars[i]);
+      }
+    }
+    
+    // 页面加载后启动动画
+    setTimeout(animateSkillBars, 500);  // 延迟500毫秒开始
+
+  </script>
 <button onclick="changeTitle()" style="position:fixed; bottom:20px; right:20px; padding:10px 20px; background:#6366f1; color:white; border:none; border-radius:8px; cursor:pointer; font-size:1rem;">
   点我
 </button>
